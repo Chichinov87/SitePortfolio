@@ -1,0 +1,74 @@
+﻿@model SytePortfolio.FullUser
+
+@{
+    ViewData["Title"] = "Мой профиль";
+}
+
+<h1>Мой профиль</h1>
+
+
+<div style="padding: 20px 0">
+    <a asp-controller="UserPortfolio" asp-action="Create" class="LinkBlock">Добавить портфолио</a> |
+    <a asp-controller="BlogUsers" asp-action="Create" class="LinkBlock">Добавить блог</a> |
+    <a asp-controller="UserPortfolio" asp-action="MyPortfolios" class="LinkBlock">Мои портфолио</a> |
+    <a asp-controller="BlogUsers" asp-action="MyBlogs" class="LinkBlock">Мои блоги</a>
+</div>
+
+
+
+<div class="row InBlock">
+    <div class=" col-md-7">
+        @foreach (var elem in Model.Image)
+        {
+                <div class="imageDetails"><img class="image" src="data:image/jpeg;base64,@(Convert.ToBase64String(elem.DataImg))" /></div>
+        }
+    </div>
+
+    <div class="col-md-5">
+        <div>
+            <h6>Статус</h6>
+            <h5>@if (Model.OneUser.NameUser != null)@Model.OneUser.SurnameUser @Model.OneUser.NameUser @Model.OneUser.MiddlenameUser</h5>
+            <p>@if (Model.OneUser.AgeUser != null)@Model.OneUser.AgeUser</p>
+            <h6>@if (Model.OneUser.AdressUser != null)@Model.OneUser.AdressUser</h6>
+            <p><b><i>"@if (Model.BiographyUser.StatusUser != null)@Model.BiographyUser.StatusUser"</i></b></p>
+            <hr />
+            <h6>@if (Model.BiographyUser.NameHistoryBiography != null)@Model.BiographyUser.NameHistoryBiography</h6>
+            <p><i>@if (Model.BiographyUser.UserHistory != null)@Model.BiographyUser.UserHistory</i></p>
+        </div>
+
+        <div>
+            <p>@if (Model.OneUser.AmailUser != null)@Model.OneUser.AmailUser</p>
+            <p>@if (Model.OneUser.PhoneUser != null)@Model.OneUser.PhoneUser</p>
+        </div>
+
+        <div>
+            <h6>Образование</h6>
+            <h6>@if (Model.EducationUser.StatusEducation != null)@Model.EducationUser.StatusEducation</h6>
+            <p>@if (Model.EducationUser.EducationalInstitution != null)@Model.EducationUser.EducationalInstitution</p>
+            <p>@if (Model.EducationUser.NameSpecialization != null)@Model.EducationUser.NameSpecialization</p>
+        </div>
+
+        <div>
+            <h6>Место работы</h6>
+            <p>@if (Model.WorkplaceUser.NameOrganization != null)@Model.WorkplaceUser.NameOrganization</p>
+            <p>@if (Model.WorkplaceUser.UserPosition != null)@Model.WorkplaceUser.UserPosition</p>
+            <h6>Обязанности</h6>
+            <p>@if (Model.WorkplaceUser.DescriptionWorkplace != null)@Model.WorkplaceUser.DescriptionWorkplace</p>
+            <h6>Ключевые навыки</h6>
+            <p>@if (Model.WorkplaceUser.KeySkill != null)@Model.WorkplaceUser.KeySkill</p>
+        </div>
+
+        <div>
+            <h6>Услуги</h6>
+            <p>@if (Model.ServicesUser.NameServices != null)@Model.ServicesUser.NameServices</p>
+            <p>@if (Model.ServicesUser.DescriptionServices != null)@Model.ServicesUser.DescriptionServices</p>
+        </div>
+
+    </div>
+
+</div>
+
+<div style="padding: 20px 0">
+    <a asp-action="Edit" asp-route-id="@Model.OneUser.IdUser" class="LinkBlock">Редактировать профиль</a> |
+    <a asp-action="Index" class="LinkBlock">Все пользователи</a>
+</div>

@@ -1,0 +1,43 @@
+﻿@model FullPortfolio
+
+@{
+    ViewData["Title"] = "Портфолио пользователя";
+}
+
+<h5>Портфолио пользователя</h5>
+
+    <div class="row block">
+        @foreach (var item in @Model.User)
+        {
+        <div class="col-md-4">
+            <div class="InBlock listBlock">
+                <div class="contentBlock">
+                    <h5 class="textBlock"><a asp-action="Details" asp-route-id="@item.IdPortfolio" style="color: #A52A2A">@item.NamePortfolio</a></h5>
+                    <p class="textBlock">
+                        @item.DescriptionPortfolio
+                    </p>
+                </div>
+                <hr />
+                <div class="contentBlock">
+                    @foreach (var elem in Model.Image)
+                    {
+                        if (elem.IdPortfolio == @item.IdPortfolio)
+                        {
+                            if (item.MainImg == elem.IdImg)
+                            {
+                                <div class="imgBlock"><img style='height:60px;' src="data:image/jpeg;base64,@(Convert.ToBase64String(elem.DataImg))" /></div>
+                            }
+                        }
+                    }
+
+                    <p>Добавлено: @item.DatePortfolio</p>
+                    <a href="@item.LinkPortfolio" style="color: #A52A2A">Ссылка на портфолио</a><br />
+                    <a asp-action="Details" asp-route-id="@item.IdPortfolio" style="color: #A52A2A">Просмотр</a><br />
+                    <a asp-controller="UserProfiles" asp-action="Details" asp-route-id="@item.IdUser" class="LinkBlock">Профиль пользователя</a>
+                </div>
+                </div>
+            </div>
+         }
+        
+     </div>
+    <div style="padding: 20px 0"><a asp-controller="UserProfiles" asp-action="Index" class="LinkBlock">Все пользователи</a></div>

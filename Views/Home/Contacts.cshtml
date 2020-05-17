@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewData["Title"] = "Схема проезда";
+}
+    <h3>Наши контакты</h3>
+
+    <div class="row block">
+        <div class="InBlock">
+            <div class="col-12 linkIcon">
+
+                <ul class="list-unstyled" style="border-radius: 5px; display: inline-block; padding: 10px; margin: 20px 0">
+                    <li class="LiBlock">
+                        <a href="https://vk.com/" target="_blank"><img src="/img/vk.png" width="25"></a>
+                        <a href="http://whatsap.me/pixel" target="_blank"><img src="/img/whatsapp.png" width="25"></a>
+                        <a href="https://www.instagram.com/toly87/" target="_blank"><img src="/img/instagram.png" width="25"></a>
+                        <a href="https://www.facebook.com/anatol.anatolio" target="_blank"><img src="/img/facebook.png" width="25"></a>
+                        <a href="https://github.com/" target="_blank"><img src="/img/github.png" width="25"></a>
+                    </li>
+                    <li>Электронная почта: 89261969132@mail.ru</li>
+                    <li>Телефон: +7(926)-196-91-32</li>
+                    <li><a href="http://tolik87.beget.tech/" target="blank" class="LinkBlock">admin <img src="/img/znak.png" width="27" /></a>
+                </ul>
+
+            </div>
+
+
+            <div class="col-12">
+                <h5>Время работы</h5>
+                <div>
+                    <h6>Пн. - Сб. с 9:00 до 21:00</h6>
+                </div>
+            </div>
+
+
+            <div class="col-md-12 text-center">
+                <h5>Схема проезда</h5>
+
+                <div id="map" style="width: 1000px; min-height: 200px; text-align: center"></div>
+
+                <script type="text/javascript">
+                    ymaps.ready(init);
+                    var myMap;
+
+                    function init() {
+                        myMap = new ymaps.Map("map", {
+                            center: [55.76, 37.64],
+                            zoom: 7
+                        });
+                    }
+                </script>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div>
+        <a asp-action="Index" class="LinkBlock">Вернуться на главную</a>
+    </div>

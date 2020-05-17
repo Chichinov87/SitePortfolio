@@ -1,0 +1,59 @@
+﻿@model SytePortfolio.BlogUser
+
+@{
+    ViewData["Title"] = "Создать блог";
+}
+
+<h1>Новый блог</h1>
+
+<hr />
+<div class="row">
+    <div class="InBlock" style="width: 100%">
+        <form asp-action="Create" enctype="multipart/form-data" method="post" style="width: 80%">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+
+            <div class="form-group col-md-8">
+                <h5>Тема блога</h5>
+                @Html.ListBox("TypePortfolio", new MultiSelectList(new string[]
+                { "Языки программирования", "Кодинг", "Системы и сети", "Железо",
+                "Консольное приложение", "Дополнительное ПО", "Базы данных", "Новости", "Немного юмора", "Другое..."}))
+                <span asp-validation-for="TypeBlog" class="text-danger"></span>
+            </div>
+
+            <div class="form-group col-md-8">
+                <h5>Название блога</h5>
+                <input asp-for="NameBlog" class="form-control textInput" placeholder="Введите текст" />
+                <span asp-validation-for="NameBlog" class="text-danger"></span>
+            </div>
+
+            <div class="form-group col-md-8">
+                <h5>Текст</h5>
+                <textarea asp-for="TextBlog" class="form-control textInput" placeholder="Введите текст"></textarea>
+                <span asp-validation-for="TextBlog" class="text-danger"></span>
+            </div>
+
+            <div class="form-group col-md-8">
+                <h5>Добавить изображения</h5>
+                <input type="file" class="form-control textInput" name="files" />
+                <input type="file" class="form-control textInput" name="files" />
+                <input type="file" class="form-control textInput" name="files" />
+                <input type="file" class="form-control textInput" name="files" />
+                <span class="text-danger"></span>
+            </div>
+
+            <div class="form-group col-md-4">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<div style="padding: 20px 0">
+    <a asp-action="Index" class="LinkBlock">Вернуться</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

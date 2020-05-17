@@ -1,0 +1,34 @@
+﻿@model FullProfile
+
+@{
+    ViewData["Title"] = "Пользователи";
+}
+
+<h1>Все пользователи</h1>
+
+<p>
+    <a asp-action="MyProfile" class="LinkBlock">Мой профиль</a>
+</p>
+<div class="row block">
+    @foreach (var elem in Model.User)
+    {
+    <div class="col-md-4">
+        <div class="profile">
+            <div class="profileBlock">
+                <ul>
+                    <li>@if (elem != null)@elem.SurnameUser</li>
+                    <li>@if (elem != null)@elem.NameUser</li>
+                    <li>@if (elem != null)@elem.CityUser</li>
+                    <li><a asp-action="Details" asp-route-id="@elem.IdUser" class="LinkBlock">Просмотр</a></li>
+                </ul>
+            </div>
+            
+            @if (elem.MainImg == elem.IdImg)
+            {
+            <div class="profileBlock"><img style='height:100px;' src="data:image/jpeg;base64,@(Convert.ToBase64String(elem.ImgUser))" /></div>
+            }
+        </div>
+    </div>
+    }
+</div>
+

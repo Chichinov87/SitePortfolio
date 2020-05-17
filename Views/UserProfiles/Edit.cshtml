@@ -1,0 +1,182 @@
+﻿@model SytePortfolio.FullUser
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h4>Редактировать профиль</h4>
+<hr />
+<div class="row block">
+    <div class="InBlock" style="width: 80%">
+        <div class="col-md-6">
+            <form asp-action="Edit" enctype="multipart/form-data" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="@Model.OneUser.IdUser" />
+                <div class="form-group">
+                    <h6>Имя</h6>
+                    <input asp-for="@Model.OneUser.NameUser" class="form-control textInput" />
+                    <span asp-validation-for="@Model.OneUser.NameUser" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <h6>Фамилия</h6>
+                    <input asp-for="@Model.OneUser.SurnameUser" class="form-control textInput" />
+                    <span asp-validation-for="@Model.OneUser.SurnameUser" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <h6>Отчество</h6>
+                    <input asp-for="@Model.OneUser.MiddlenameUser" class="form-control textInput" />
+                    <span asp-validation-for="@Model.OneUser.MiddlenameUser" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <h6>Дата рождения</h6>
+                    <input asp-for="@Model.OneUser.AgeUser" class="form-control textInput" type="date"/>
+                    <span asp-validation-for="@Model.OneUser.AgeUser" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <h6>Город проживания</h6>
+                    <input asp-for="@Model.OneUser.AdressUser" class="form-control textInput" />
+                    <span asp-validation-for="@Model.OneUser.AdressUser" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <h6>Электронная почта</h6>
+                    <input asp-for="@Model.OneUser.AmailUser" class="form-control textInput" />
+                    <span asp-validation-for="@Model.OneUser.AmailUser" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <h6>Контактный телефон</h6>
+                    <input asp-for="@Model.OneUser.PhoneUser" class="form-control textInput" />
+                    <span asp-validation-for="@Model.OneUser.PhoneUser" class="text-danger"></span>
+                </div>
+
+                <div>
+                    <h5>Образование</h5>
+                    <div class="form-group">
+                        <h6>Статус образования</h6>
+                        <input asp-for="@Model.EducationUser.StatusEducation" class="form-control textInput" />
+                        <span asp-validation-for="@Model.EducationUser.StatusEducation" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <h6>Название учебного заведения</h6>
+                        <input asp-for="@Model.EducationUser.EducationalInstitution" class="form-control textInput" />
+                        <span asp-validation-for="@Model.EducationUser.EducationalInstitution" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <h6>Специализация</h6>
+                        <input asp-for="@Model.EducationUser.NameSpecialization" class="form-control textInput" />
+                        <span asp-validation-for="@Model.EducationUser.NameSpecialization" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="form-group">
+                        <h6>Место работы</h6>
+                        <input asp-for="@Model.WorkplaceUser.NameOrganization" class="form-control textInput" />
+                        <span asp-validation-for="@Model.WorkplaceUser.NameOrganization" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <h6>Должность</h6>
+                        <input asp-for="@Model.WorkplaceUser.UserPosition" class="form-control textInput" />
+                        <span asp-validation-for="@Model.WorkplaceUser.UserPosition" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <h6>Основные обязанности</h6>
+                        <textarea asp-for="@Model.WorkplaceUser.DescriptionWorkplace" class="form-control textInput"></textarea>
+                        <span asp-validation-for="@Model.WorkplaceUser.DescriptionWorkplace" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <h6>Ключевые навыки</h6>
+                        <input asp-for="@Model.WorkplaceUser.KeySkill" class="form-control textInput" />
+                        <span asp-validation-for="@Model.WorkplaceUser.KeySkill" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div>
+                    <h6>Название услуги</h6>
+                    <div class="form-group">
+                        <input asp-for="@Model.ServicesUser.NameServices" class="form-control textInput" />
+                        <span asp-validation-for="@Model.ServicesUser.NameServices" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <h6>Описание услуги</h6>
+                        <textarea asp-for="@Model.ServicesUser.DescriptionServices" class="form-control textInput"></textarea>
+                        <span asp-validation-for="@Model.ServicesUser.DescriptionServices" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div>
+                    <h6>Ваш девиз</h6>
+                    <div class="form-group">
+                        <input asp-for="@Model.BiographyUser.StatusUser" class="form-control textInput" />
+                        <span asp-validation-for="@Model.BiographyUser.StatusUser" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <h6>Название вступления</h6>
+                        <input asp-for="@Model.BiographyUser.NameHistoryBiography" class="form-control textInput" />
+                        <span asp-validation-for="@Model.BiographyUser.NameHistoryBiography" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <h6>Биография пользователя</h6>
+                        <textarea asp-for="@Model.BiographyUser.UserHistory" class="form-control textInput"></textarea>
+                        <span asp-validation-for="@Model.BiographyUser.UserHistory" class="text-danger"></span>
+                    </div>
+                </div>
+                <div>
+
+                    <h6>Фотография пользователя</h6>
+                    <div style="padding: 10px 0">
+                        @Html.Partial("UploadImage")
+                    </div>
+
+                    <div class="form-group">
+                        <input type="file" class="form-control" name="files" />
+                    </div>
+                    <script>
+                        $('.delete').on('click', function () {
+                            var val = $(this).attr("attrSubmit");
+                            $.post(
+                                "https://localhost:44374/UserProfiles/DeleteImage",
+                                {
+                                    id: val,
+                                }
+                            );
+                            $('.' + val).hide(500);
+                        });
+                    </script>
+                </div>
+                <div class="form-group">
+                    <input id="ChangeProfile" type="submit" value="Сохранить" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div style="padding: 20px 0">
+    <div>
+        @if(ViewBag.StatusChange != null)
+        {
+            <b style="color: green">@ViewBag.StatusChange</b>
+        }
+        <a asp-controller="UserAuthorization" asp-action="Edit" class="LinkBlock">Изменить пароль</a>
+    </div>
+    <div>
+        <a asp-action="Delete" asp-route-id="@Model.OneUser.IdUser" class="LinkBlock">Удалить профиль</a>
+    </div>
+    
+    <div>
+        <a asp-controller="UserProfiles" asp-action="MyProfile" class="LinkBlock">Вернуться</a>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

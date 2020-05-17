@@ -1,0 +1,26 @@
+﻿@model SytePortfolio.UserProfile
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h3>Вы действительно хотите удалить свой профиль?</h3>
+<hr />
+<div class="row block">
+    <div class="col-md-8">
+        <div class="InBlock">
+            <h5>@if (Model.NameUser != null)@Model.SurnameUser @Model.NameUser @Model.MiddlenameUser</h5>
+            <p>@if (Model.AgeUser != null)@Model.AgeUser</p>
+            <p><b>@if (Model.AdressUser != null)@Model.AdressUser</b></p>
+            <p>@if (Model.AmailUser != null)@Model.AmailUser</p>
+            <p>@if (Model.PhoneUser != null)@Model.PhoneUser</p>
+
+            <form asp-action="Delete" >
+                <input type="hidden" asp-for="IdUser" />
+                <input type="submit" value="Удалить" class="btn btn-danger" /> 
+                
+            </form>
+        </div>
+    </div>
+</div>
+<div style="padding: 20px 0"><a asp-action="MyProfile" class="LinkBlock">Мой профиль</a></div>

@@ -1,0 +1,25 @@
+﻿
+
+
+@foreach (var elem in @Model.Image)
+{
+    <div class="@elem.IdImg">
+        <div class="imageDetails"><img class="image" src="data:image/jpeg;base64,@(Convert.ToBase64String(elem.DataImg))" /></div>
+        <div style="background: #444444; color: #6CB0E5; cursor: pointer; padding: 5px; border-radius: 3px; display: block" class="delete" attrSubmit="@elem.IdImg">Удалить</div>
+    </div>
+
+}
+
+<script>
+       $('.delete').on('click', function () {
+           var val = $(this).attr("attrSubmit");
+           $.post(
+               "https://localhost:44374/BlogUsers/DeleteImage",
+               {
+                   id: val,
+               }
+           );
+           $('.' + val).hide(500);
+       });
+</script>
+

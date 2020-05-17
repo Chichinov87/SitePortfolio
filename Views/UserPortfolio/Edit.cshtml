@@ -1,0 +1,81 @@
+﻿@model SytePortfolio.FullPortfolio
+
+@{
+    ViewData["Title"] = "Редактировать";
+}
+
+<h4>Редактировать портфолио</h4>
+<hr />
+
+<div class="row block">
+    <div class="InBlock" style="width: 80%">
+        <div class="col-md-6">
+            <form asp-action="Edit" asp-controller="UserPortfolio" enctype="multipart/form-data" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="@Model.OnePortfolio.IdPortfolio" />
+                <input asp-for="@Model.OnePortfolio.IdUser" class="form-control" type="hidden" />
+
+
+                <div class="form-group">
+                    <h6>Тип проекта</h6>
+                    <input asp-for="@Model.OnePortfolio.TypePortfolio" class="form-control textInput" />
+                    <span asp-validation-for="@Model.OnePortfolio.TypePortfolio" class="text-danger "></span>
+                </div>
+
+
+                <div class="form-group">
+                    <h6>Название портфолио</h6>
+                    <input asp-for="@Model.OnePortfolio.NamePortfolio" class="form-control textInput" />
+                    <span asp-validation-for="@Model.OnePortfolio.NamePortfolio" class="text-danger"></span>
+                </div>
+
+
+                <div class="form-group">
+                    <h6>Описание портфолио</h6>
+                    <textarea asp-for="@Model.OnePortfolio.DescriptionPortfolio" class="form-control textInput"></textarea>
+                    <span asp-validation-for="@Model.OnePortfolio.DescriptionPortfolio" class="text-danger"></span>
+                </div>
+
+
+                <div class="form-group">
+                    <h6>Статус проекта</h6>
+                    <input asp-for="@Model.OnePortfolio.StatusPortfolio" class="form-control textInput" />
+                    <span asp-validation-for="@Model.OnePortfolio.StatusPortfolio" class="text-danger"></span>
+                </div>
+
+
+                <div class="form-group">
+                    <h6>Ссылка на более подробное описание проекта</h6>
+                    <input asp-for="@Model.OnePortfolio.LinkPortfolio" class="form-control textInput" />
+                    <span asp-validation-for="@Model.OnePortfolio.LinkPortfolio" class="text-danger"></span>
+                </div>
+
+
+
+                <h6>Фотогрфии портфолио</h6>
+                @Html.Partial("UploadImage")
+
+                <div class="form-group">
+                    <h6>Загрузить фотографии</h6>
+                    <input type="file" class="form-control" name="files" />
+                    <input type="file" class="form-control" name="files" />
+                    <input type="file" class="form-control" name="files" />
+                    <input type="file" class="form-control" name="files" />
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" value="Сохранить" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div style="padding: 20px 0">
+    <a asp-action="Delete" asp-route-id="IdPortfolio" class="LinkBlock">Удалить</a> |
+    <a asp-action="MyPortfolios" class="LinkBlock">Мои портфолио</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

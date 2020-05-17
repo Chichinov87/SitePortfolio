@@ -1,0 +1,43 @@
+﻿@model SytePortfolio.UserPortfolio
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+
+<h3>Вы действительно хотите удалить это портфолио?</h3>
+<hr />
+<div class="row block">
+    <div class="col-md-8">
+        <div class="InBlock">
+            <dl>
+                <dt>
+                    Название проекта:
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.NamePortfolio)
+                </dd>
+                <dt>
+                    Тип портфолио:
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.TypePortfolio)
+                </dd>
+                <dt>
+                    Дата создания портфолио:
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.DatePortfolio)
+                </dd>
+            </dl>
+
+            <form asp-action="Delete">
+                <input type="hidden" asp-for="@Model.IdPortfolio" />
+                <input type="submit" value="Удалить без восстановления" class="btn btn-danger" /> |
+                <a asp-action="MyPortfolios" class="LinkBlock">Мои портфолио</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div style="padding: 20px 0"><a asp-action="Details" asp-route-id="@Model.IdPortfolio" class="LinkBlock">Назад</a></div>

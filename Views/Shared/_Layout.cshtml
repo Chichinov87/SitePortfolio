@@ -1,0 +1,146 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+    <meta name="theme-color" content="#000000" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Шрифты google -->
+    <link href="https://fonts.googleapis.com/css?family=Audiowide&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Exo+2&display=swap&subset=cyrillic" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Russo+One&display=swap&subset=cyrillic" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Saira+Stencil+One&display=swap" rel="stylesheet">
+
+
+    <!-- Встроенные стили -->
+    <link href="/css/LayoutStyle.css" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+
+    <title>@ViewData["Title"]</title>
+
+    <!--*****************************************************************************************************************-->
+    <script src="/js/jQuery.js"></script>
+    <script src="https://api-maps.yandex.ru/2.0-stable/?apikey=dbafe1ff-0fda-4352-9c81-e316bdc91c86&load=package.standard&lang=ru-RU" type="text/javascript"></script>
+
+</head>
+<body>
+
+    <header>
+        <div class="net">
+            <div class="linkIcon">
+                <a href="https://vk.com/public161733877" target="_blank"><img src="/img/vk.png" width="25"></a>
+                <a href="http://whatsap.me/pixel" target="_blank"><img src="/img/whatsapp.png" width="25"></a>
+                <a href="https://www.instagram.com/toly87/" target="_blank"><img src="/img/instagram.png" width="25"></a>
+                <a href="https://www.facebook.com/anatol.anatolio" target="_blank"><img src="/img/facebook.png" width="25"></a>
+                <a href="https://github.com/userAnatolio" target="_blank"><img src="/img/github.png" width="25"></a>
+                <a href="https://stepik.org" target="_blank"><img src="/img/stepik.png" width="25"></a>
+                <a href="https://www.coursera.org" target="_blank"><img src="/img/coursera.png" width="29"></a>
+            </div>
+        </div>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="nameSite" asp-area="" asp-controller="Home" asp-action="Index">Portfolio.ru</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <partial name="LoginPartial" />
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item nav-up-li">
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Главная</a>
+                        </li>
+                        <li class="nav-item nav-up-li">
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Services">Услуги</a>
+                        </li>
+                        <li class="nav-item nav-up-li">
+                            <a class="nav-link" asp-area="" asp-controller="UserPortfolio" asp-action="Index">Портфолио</a>
+                        </li>
+                        <li class="nav-item nav-up-li">
+                            <a class="nav-link" asp-area="" asp-controller="BlogUsers" asp-action="Index">Блоги</a>
+                        </li>
+                        <li class="nav-item nav-up-li">
+                            <a class="nav-link" asp-area="" asp-controller="UserProfiles" asp-action="Index">Пользователи</a>
+                        </li>
+                        <li class="nav-item nav-up-li">
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Contacts">Контакты</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div><a id="Down"></a><!--вверх страницы--></div>
+        <div class="container wrap">
+
+            @RenderBody()
+        </div>
+        <div><a href="#Down" class="top">ВВЕРХ</a></div><!--Кнопка наверх-->
+
+
+
+        <footer style="width: 100%">
+            <div class="container" style="width: 100%">
+                <div class="row" style="width: 100%">
+
+                    <div class="col-md-4 footerDiv" style="text-align: left">
+                        <a href="/"><h6 class="nameSite" style="padding: 0; margin: 0; text-align: left">Portfolio.ru</h6></a>
+                        <p>Создание, тюнинг и доработка сайтов</p>
+                    </div>
+
+                    <div class="col-md-3 footerDiv" style="text-align: center">
+                        <ul class="list-unstyled">
+                            <li><a href="#">Помощь</a></li>
+                            <li><a href="#">Гарантия и поддержка</a></li>
+                            <li><a href="#">Сотрудничество</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-md-4 linkIcon footerDiv" style="width: 100%; display: inline-block">
+                        <ul class="list-unstyled ulIcon">
+                            <li>
+                                <a href="https://vk.com/public161733877" target="_blank"><img src="/img/vk.png" width="25"></a>
+                                <a href="http://whatsap.me/pixel" target="_blank"><img src="/img/whatsapp.png" width="25"></a>
+                                <a href="https://www.instagram.com/toly87/" target="_blank"><img src="/img/instagram.png" width="25"></a>
+                                <a href="https://www.facebook.com/anatol.anatolio" target="_blank"><img src="/img/facebook.png" width="25"></a>
+                                <a href="https://github.com/Anatolio87" target="_blank"><img src="/img/github.png" width="25"></a>
+                            </li>
+                            <li>Пн. - Сб. с 9:00 до 21:00</li>
+                            <li>89261969132@mail.ru</li>
+                            <li>+7(926)-196-91-32</li>
+                            <li><a href="http://tolik87.beget.tech/" target="blank">admin <img src="/img/znak.png" width="27" /></a>
+                        </ul>
+                    </div>
+
+                </div>
+
+                <div class="footer-copyright text-center py-3">
+                    <p>&copy; 2018 <a href="https://ushiro.ru">«Portfolio.ru»</a> - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a></p>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <script>
+        function TextHide() {
+            let elems = document.getElementsByClassName('textBlock');
+            for (let elem of elems) {
+                elem.innerHTML = elem.innerHTML.substring(0, 80) + "...";
+            }
+        }
+        TextHide();
+    </script>
+
+    <script src="/js/ajaxMenu.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

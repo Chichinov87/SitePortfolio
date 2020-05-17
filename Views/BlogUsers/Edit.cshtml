@@ -1,0 +1,64 @@
+﻿@model SytePortfolio.FullBlog
+
+@{
+    ViewData["Title"] = "Редактировать блог";
+}
+
+<h4>Редактировать блог</h4>
+<hr />
+<div class="row block">
+    <div class="InBlock" style="width: 80%">
+        <div class="col-md-6">
+
+
+            <form asp-action="Edit" enctype="multipart/form-data" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="@Model.OneBlog.IdBlog" />
+
+                <input asp-for="@Model.OneBlog.IdUser" class="form-control" type="hidden" />
+
+                <div class="form-group">
+                    <h6>Название блога</h6>
+                    <input asp-for="@Model.OneBlog.NameBlog" class="form-control textInput" />
+                    <span asp-validation-for="@Model.OneBlog.NameBlog" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <h6>Тип блога</h6>
+                    <input asp-for="@Model.OneBlog.TypeBlog" class="form-control textInput" />
+                    <span asp-validation-for="@Model.OneBlog.TypeBlog" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <h6>Текст</h6>
+                    <textarea asp-for="@Model.OneBlog.TextBlog" class="form-control textInput"></textarea>
+                    <span asp-validation-for="@Model.OneBlog.TextBlog" class="text-danger"></span>
+                </div>
+
+                <h5>Фотографии блога</h5>
+                @Html.Partial("UploadImage")
+
+                <div class="form-group">
+                    <h6>Загрузить фотографии</h6>
+                    <input type="file" class="form-control" name="files" />
+                    <input type="file" class="form-control" name="files" />
+                    <input type="file" class="form-control" name="files" />
+                    <input type="file" class="form-control" name="files" />
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Сохранить" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div style="padding: 20px 0">
+    <a asp-action="Index" class="LinkBlock">На главную</a> |
+    <a asp-action="Delete" asp-route-id="@Model.OneBlog.IdBlog" class="LinkBlock">Удалить</a> |
+    <a asp-action="MyBlogs" class="LinkBlock">Мои блоги</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

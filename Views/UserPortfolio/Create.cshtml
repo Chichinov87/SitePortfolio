@@ -1,0 +1,73 @@
+﻿@model SytePortfolio.UserPortfolio
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Новое портфолио</h1>
+
+<hr />
+<div class="row">
+    
+        <div class="InBlock" style="width: 80%">
+            <form asp-action="Create" asp-controller="UserPortfolio" enctype="multipart/form-data" method="post" style="width: 100%">
+                <div asp-validation-summary="ModelOnly" class="text-danger "></div>
+
+                <div class="form-group col-md-8">
+                    <h5>Тип проекта</h5>
+                    @Html.ListBox("TypePortfolio", new MultiSelectList(new string[]
+                       { "Веб-приложение", "Мобильное приложение", "Разработка игр", "Системное ПО",
+                      "Консольное приложение", "Дополнительное ПО", "Фотография", "Дизайн", "Другое..."}))
+                    <span asp-validation-for="TypePortfolio" class="text-danger"></span>
+                </div>
+
+                <div class="form-group col-md-8">
+                    <h5>Название проекта</h5>
+                    <input asp-for="NamePortfolio" class="form-control textInput" placeholder="Введите название проекта" />
+                    <span asp-validation-for="NamePortfolio" class="text-danger"></span>
+                </div>
+
+                <div class="form-group col-md-8">
+                    <h5>Описание проекта</h5>
+                    <p>Расскажите хотябы в кратце о своем проекте...</p>
+                    <textarea asp-for="DescriptionPortfolio" class="form-control  textInput" placeholder="Введите текст"></textarea>
+                    <span asp-validation-for="DescriptionPortfolio" class="text-danger"></span>
+                </div>
+
+                <div class="form-group col-md-8">
+                    <h5>Статус проекта</h5>
+                    @Html.ListBox("StatusPortfolio", new MultiSelectList(new string[]
+         {"Проект готов", "В разработке", "Продается", "Продан"}))
+                    <span asp-validation-for="StatusPortfolio" class="text-danger "></span>
+                </div>
+
+                <div class="form-group col-md-8">
+                    <h5>Фото или изображение проекта</h5>
+                    <input asp-for="ImagePortfolio" type="file" class="form-control textInput" name="files" />
+                    <input asp-for="ImagePortfolio" type="file" class="form-control textInput" name="files" />
+                    <input asp-for="ImagePortfolio" type="file" class="form-control textInput" name="files" />
+                    <input asp-for="ImagePortfolio" type="file" class="form-control textInput" name="files" />
+                    <span asp-validation-for="ImagePortfolio" class="text-danger"></span>
+                </div>
+
+                <div class="form-group col-md-8">
+                    <h5>Ссылка на дополнительный источник</h5>
+                    <input asp-for="LinkPortfolio" class="form-control textInput" placeholder="Введите ссылку в это поле" />
+                    <span asp-validation-for="LinkPortfolio" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" value="Создать" class="btn btn-primary" />
+                </div>
+
+            </form>
+    </div>
+</div>
+
+<div style="padding: 20px 0">
+    <a asp-action="Index" class="LinkBlock">Вернуться</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

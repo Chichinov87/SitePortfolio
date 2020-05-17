@@ -1,0 +1,69 @@
+﻿@model FullPortfolio;
+
+@{
+    ViewData["Title"] = "Детали портфолио";
+}
+    <h3>@Model.OnePortfolio.NamePortfolio</h3>
+    <div class="row InBlock">
+        <dl class="col-md-5">
+            <dt>
+                Название портфолио:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.OnePortfolio.NamePortfolio)
+            </dd>
+            <dt>
+                Тип портфолио:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.OnePortfolio.TypePortfolio)
+            </dd>
+            <dt>
+                Статус проекта:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.OnePortfolio.StatusPortfolio)
+            </dd>
+
+            <dt>
+                Ссылка с подробным описанием проекта:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.OnePortfolio.LinkPortfolio)
+            </dd>
+            <dt>
+                Дата создания портфолио:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.OnePortfolio.DatePortfolio)
+            </dd>
+            <dt>
+                Создатель проекта:
+            </dt>
+            <dd>
+                <a href="/UserProfiles/Details/@Model.OnePortfolio.IdUser" class="LinkBlock">Перейти в профиль</a>
+            </dd>
+            <dt>
+                Описаниe проекта:
+            </dt>
+            <dd>
+                <p class="text">
+                    @Html.DisplayFor(model => model.OnePortfolio.DescriptionPortfolio)
+                </p>
+            </dd>
+        </dl>
+
+        <div class=" col-md-7">
+            <div>
+                @foreach (var img in @Model.Image)
+                {
+                <div class="imageDetails"><img class="image" src="data:image/jpeg;base64,@(Convert.ToBase64String(img.DataImg))" /></div>
+                }
+            </div>
+        </div>
+    </div>
+    <div style="padding: 20px 0">
+        <a asp-action="Edit" asp-route-id="@Model.OnePortfolio.IdPortfolio" class="LinkBlock">Редактировать</a> |
+        <a asp-action="Delete" asp-route-id="@Model.OnePortfolio.IdPortfolio" class="LinkBlock">Удалить</a> |
+        <a asp-action="Index" class="LinkBlock">Все портфолио</a>
+    </div>

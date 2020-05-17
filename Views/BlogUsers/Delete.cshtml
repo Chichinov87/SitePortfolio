@@ -1,0 +1,30 @@
+﻿@model SytePortfolio.BlogUser
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+    <h3>Вы действительно хотите удалить этот блог?</h3>
+<hr />
+<div class="row block">
+    <div class="col-md-8">
+        <div class="InBlock">
+                    <h5>Название блога: </h5>
+                    <h5>@Html.DisplayFor(model => model.NameBlog)</h5>
+
+                    <p>Дата создания: </p>
+
+                    @Html.DisplayFor(model => model.DateBlog)
+
+
+            <form asp-action="Delete">
+                <input type="hidden" asp-for="IdBlog" />
+                <input type="submit" value="Delete" class="btn btn-danger" /> |
+                <a asp-action="MyBlogs" class="LinkBlock">Мои блоги</a>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<div style="padding: 20px 0"><a asp-action="Details" asp-route-id="@Model.IdBlog" class="LinkBlock">Назад</a></div>

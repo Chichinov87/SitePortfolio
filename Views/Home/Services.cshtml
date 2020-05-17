@@ -1,0 +1,38 @@
+﻿@model SytePortfolio.FullServices
+
+@{
+    ViewData["Title"] = "Услуги";
+}
+
+<h1>Услуги пользователей</h1>
+
+<div class="row block">
+    @foreach (var elem1 in @Model.Services)
+    {
+        <div class="col-md-4">
+            <div class="InBlock listBlock" style="min-height: 40em">
+                @if (elem1.NameServices != null && elem1.DescriptionServices != null)
+                {
+                <h5>@elem1.NameServices</h5>
+                <p >@elem1.DescriptionServices</p>
+                @foreach (var elem2 in Model.User)
+                {
+                    if (elem2.IdUser == elem1.IdUser)
+                    {
+                        <ul>
+                            <li><a asp-action="Details" asp-controller="UserProfiles" asp-route-id="@elem2.IdUser" style="color: #A52A2A">@elem2.NameUser</a></li>
+                            @if (@elem2.PhoneUser != null)
+                            {<li>Тел: @elem2.PhoneUser</li>}
+                            @if (elem2.AmailUser != null)
+                            {<li>email: @elem2.AmailUser</li>}
+                        </ul>
+                    }
+                }
+                }
+            </div>
+        </div>
+    }
+</div>
+<div>
+    <a asp-action="Index" style="color: #A52A2A">Вернуться на главную</a>
+</div>

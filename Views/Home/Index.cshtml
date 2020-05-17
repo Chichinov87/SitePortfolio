@@ -1,0 +1,67 @@
+﻿@model  FullHome
+
+    @{
+    ViewData["Title"] = "Главная";
+    }
+    <div class="homeText">
+        <p>
+            На нашем сайте вы можете разместить свое портфолио или добавить блог.
+        </p>
+    </div>
+
+
+    <div class="row">
+        <div class="col-6 text-center CreateButton">
+            <a href="/UserPortfolio/Create">Создать портфолио</a>
+        </div>
+        <div class="col-6 text-center CreateButton">
+            <a href="/BlogUsers/Create">Создать блог</a>
+        </div>
+    </div>
+
+    <div class="row block">
+
+        <div class="col-6">
+            <h5>Последние добавленные портфолио</h5>
+            @foreach (var elem in Model.Portfolio)
+            {
+        <div class="InBlock SizeBlock">
+            <h6><a asp-controller="UserPortfolio" asp-action="Details" asp-route-id="@elem.IdPortfolio" style="color: #A52A2A">
+                Портфолио:<br />
+                @elem.TypePortfolio<br />
+                @elem.NamePortfolio
+            </a></h6>
+            
+            <div class="blockImg">
+                <img class="imgBlock" style='width:60%' src="data:image/jpeg;base64,@(Convert.ToBase64String(elem.ImagePortfolio))" />
+            </div>
+            <div class="text"><p>@elem.DescriptionPortfolio</p></div>
+            <i>Автор: </i>
+            <a asp-controller="UserProfiles" asp-action="Details" asp-route-id="@elem.IdUserPortfolio" style="color: #A52A2A"><i>@elem.NameUserPortfolio</i></a>
+            <i> @elem.DatePortfolio</i>
+        </div>
+             }
+                
+         </div>
+
+
+        <div class="col-6">
+            <h5>Последние добавленные блоги</h5>
+            @foreach (var elem in Model.Blog)
+            {
+        <div class="InBlock SizeBlock">
+            <a asp-controller="BlogUsers" asp-action="Details" asp-route-id="@elem.IdBlog" style="color: #A52A2A"><h6>@elem.NameBlog</h6></a>
+            <div class="blockImg">
+                <img class="imgBlock" style='width:60%' src="data:image/jpeg;base64,@(Convert.ToBase64String(elem.ImageBlog))" />
+            </div>
+            <p class="text">@elem.DescriptionBlog</p>
+            <p>Тема блога: @elem.TypeBlog</p>
+            <i>Автор: </i>
+            <a asp-controller="UserProfiles" asp-action="Details" asp-route-id="@elem.IdUserBlog" style="color: #A52A2A"><i>@elem.NameUserBlog</i></a>
+            <i> @elem.DateBlog</i>
+        </div>
+            }
+
+        </div>
+
+    </div>

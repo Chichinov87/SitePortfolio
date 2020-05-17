@@ -1,0 +1,66 @@
+﻿@model SytePortfolio.CreateUser
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Изменить пароль</h1>
+<ol>
+    <li>Поля не могут быть пустыми</li>
+    <li>Можно использовать только буквы и цифры латинского алфавита</li>
+    <li>Длина логина или пароля должна составлять от 5 до 30 символов</li>
+    <li>Пароли должны совпадать</li>
+</ol>
+
+@Html.ValidationSummary(true)
+<hr />
+<div class="row block">
+    <div class="col-md-4">
+        <div class="authorization">
+            <form asp-action="Edit" enctype="multipart/form-data" method="post">
+                <input type="hidden" asp-for="IdUser" />
+
+                <input asp-for="LoginUser" class="form-control" type="hidden" />
+
+                <div class="form-group">
+                    <h6>Введите старый пароль</h6>
+                    <input asp-for="password" class="form-control textInput" type="password" />
+
+                    @if (ViewBag.er != null)
+                    {
+                        <b style="color: red">@ViewBag.er</b><br />
+                        <b>@ViewBag.p1</b><br />
+                        <b>@ViewBag.p2</b>
+                    }
+                    <span asp-for="password" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <h6>Введите новый пароль</h6>
+                    <input asp-for="password1" class="form-control textInput" type="password" />
+                    @Html.ValidationMessageFor(model => model.password1)
+                    <span asp-for="password1" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <h6>Подтвердите новый пароль</h6>
+                    <input asp-for="password2" class="form-control textInput" type="password" />
+                    @Html.ValidationMessageFor(model => model.password2)
+                    <span asp-for="password2" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" value="Сохранить" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div style="padding: 20px 0">
+    <a asp-action="Index" class="LinkBlock">Вернуться на главную страницу</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

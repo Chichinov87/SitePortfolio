@@ -1,0 +1,42 @@
+﻿<ul class="navbar-nav" id="loginOn">
+    <li class="nav-item">
+        <a class="nav-link nav-up" id="idUser" title="Manage" href="/UserProfiles/MyProfile"></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link nav-up" title="Manage" href="/UserAuthorization/LogoutUser">Выход</a>
+    </li>
+</ul>
+
+<ul class="navbar-nav" id="loginOf">
+    <li class="nav-item">
+        <a class="nav-link nav-up" href="/UserAuthorization/Create">Регистрация</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link nav-up" href="/UserAuthorization">Вход</a>
+    </li>
+</ul>
+
+
+<script>
+    function getCookie(name) {
+        let matches = document.cookie.match(new RegExp(
+            "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+        ));
+        return matches ? decodeURIComponent(matches[1]) : undefined;
+    }
+    function StatusLogin() {
+        var LoginUser = getCookie("LoginUser");
+        var IdUser = getCookie("IdUser");
+        var UserPassword = getCookie("UserPassword");
+        if (LoginUser != null && IdUser != null && UserPassword == "true") {
+            $('#loginOf').hide();
+            $('#idUser').html(LoginUser);
+        }
+        else
+        {
+            $('#loginOn').hide();
+        }
+    }
+
+    StatusLogin();
+</script>
