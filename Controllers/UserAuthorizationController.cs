@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
+using SytePortfolio.Service;
 
 namespace SytePortfolio.Controllers
 {
@@ -104,6 +105,8 @@ namespace SytePortfolio.Controllers
                 _context.Add(new UserBiography {UserHistory=" "});
                 _context.Add(userAuthorization);
                 await _context.SaveChangesAsync();
+                await EmailService.SendEmailAsync("89261969132@mail.ru", "Новый пользователь", authorization.LoginUser);
+
                 ViewBag.Nice = "Регистрация прошла успешно, войдите в систему используя свой логин и пароль";
                 return View("Index");
             }
